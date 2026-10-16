@@ -4,146 +4,612 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barnacare | Welcome</title>
+  <meta name="theme-color" content="#073f3b">
+  <meta name="description" content="Barnacare is a student-led biomedical project exploring marine collagen-loaded dermal microneedle patches.">
+  <title>Barnacare | Biomedical Innovation</title>
+
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --deep: #073f3b;
+      --green: #0c6258;
+      --mint: #c8f2df;
+      --pale: #f2faf6;
+      --white: #ffffff;
+      --text: #173c38;
+      --muted: #647b75;
+      --line: #dcece4;
     }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #20352d;
-      background: #f5faf6;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
     }
 
     header {
-      padding: 22px 8%;
-      background: white;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      min-height: 76px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .logo {
-      font-size: 25px;
-      font-weight: bold;
-      color: #247451;
+      color: var(--deep);
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
-    nav a {
-      margin-left: 18px;
-      color: #20352d;
-      text-decoration: none;
+    .logo span { color: #45a985; }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-size: .9rem;
+      font-weight: 600;
     }
+
+    .nav-links a:hover { color: #29916f; }
 
     .hero {
-      text-align: center;
-      padding: 90px 20px;
-      background: #e3f3e8;
+      background:
+        radial-gradient(circle at 80% 25%, #bfeeda 0, transparent 29%),
+        linear-gradient(125deg, #f1faf5, #ffffff 65%);
+      padding: 82px 0 88px;
+      overflow: hidden;
     }
 
-    .hero h1 {
-      font-size: clamp(36px, 7vw, 56px);
-      margin-bottom: 16px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 45px;
     }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--mint);
+      color: var(--deep);
+      padding: 7px 13px;
+      border-radius: 30px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      color: var(--deep);
+      font-size: clamp(2.6rem, 5.5vw, 4.7rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    h1 span { color: #3b9c79; }
 
     .hero p {
-      max-width: 550px;
-      margin: 0 auto 28px;
-      line-height: 1.8;
-      font-size: 18px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 580px;
+      margin-bottom: 28px;
     }
 
     .button {
       display: inline-block;
-      background: #247451;
+      background: var(--deep);
       color: white;
-      padding: 14px 25px;
-      border-radius: 8px;
-      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 9px;
+      font-weight: 700;
+      margin: 0 8px 8px 0;
+      transition: .2s;
     }
 
-    section {
-      padding: 48px 8%;
-      text-align: center;
+    .button:hover { background: var(--green); transform: translateY(-2px); }
+
+    .button.secondary {
+      background: white;
+      color: var(--deep);
+      border: 1px solid #b8d9ca;
     }
+
+    .art {
+      min-height: 350px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #d8f7e8, #8fd8b9);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .art::before, .art::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(7,63,59,.13);
+      border-radius: 50%;
+    }
+
+    .art::before { width: 290px; height: 290px; }
+    .art::after { width: 230px; height: 230px; }
+
+    .patch {
+      position: relative;
+      z-index: 1;
+      width: 190px;
+      height: 190px;
+      border-radius: 30px;
+      background: linear-gradient(145deg, #ffffff, #d7eee4);
+      box-shadow: 15px 24px 38px #286c5740, inset -5px -5px 14px #b6d8c9;
+      transform: rotate(-12deg);
+      display: grid;
+      place-items: center;
+    }
+
+    .patch-inner {
+      width: 150px;
+      height: 150px;
+      border: 2px dashed #8cc7ac;
+      border-radius: 23px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      place-items: center;
+      padding: 15px;
+    }
+
+    .needle {
+      width: 12px;
+      height: 27px;
+      background: linear-gradient(90deg, #75cba4, #effff6, #5eaf8b);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+
+    .art-label {
+      position: absolute;
+      bottom: 23px;
+      right: 22px;
+      background: white;
+      border-radius: 12px;
+      padding: 10px 15px;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--deep);
+      box-shadow: 0 8px 20px #073f3b14;
+    }
+
+    section { padding: 76px 0; }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--deep);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-heading p { color: var(--muted); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .about-copy h3 {
+      color: var(--deep);
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .about-copy p { color: var(--muted); margin-bottom: 15px; }
+
+    .note {
+      background: var(--pale);
+      border-left: 4px solid #54b68c;
+      border-radius: 0 12px 12px 0;
+      padding: 22px;
+      margin-top: 10px;
+    }
+
+    .note strong { color: var(--deep); }
 
     .cards {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 28px;
     }
 
     .card {
+      border: 1px solid var(--line);
       background: white;
+      padding: 27px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px #073f3b08;
+    }
+
+    .card-icon {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
       border-radius: 14px;
+      background: var(--mint);
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .card h3 { color: var(--deep); margin-bottom: 9px; }
+    .card p { color: var(--muted); font-size: .96rem; }
+
+    .process { background: var(--pale); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .step {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
       padding: 25px;
-      max-width: 300px;
-      flex: 1 1 220px;
-      box-shadow: 0 4px 18px #183c2510;
+    }
+
+    .step-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #55b58b;
+      margin-bottom: 8px;
+    }
+
+    .step h3 { color: var(--deep); margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: .95rem; }
+
+    .team-intro {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .team-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-width: 820px;
+      margin: auto;
+    }
+
+    .member {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 15px;
+      background: #fff;
+    }
+
+    .avatar {
+      min-width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--deep);
+      background: var(--mint);
+      font-weight: 800;
+    }
+
+    .member strong { color: var(--deep); font-size: .95rem; }
+
+    .contact {
+      background: var(--deep);
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 14px;
+    }
+
+    .contact p {
+      color: #d0e7dd;
+      max-width: 650px;
+      margin: 0 auto 25px;
+    }
+
+    .contact .button {
+      background: var(--mint);
+      color: var(--deep);
+    }
+
+    .disclaimer {
+      font-size: .83rem;
+      color: #c4ddd3;
+      margin-top: 30px;
     }
 
     footer {
+      padding: 22px 0;
       text-align: center;
-      padding: 25px;
-      background: #203d30;
-      color: white;
+      color: var(--muted);
+      background: #f7fbf8;
+      font-size: .86rem;
+    }
+
+    @media (max-width: 760px) {
+      nav { padding: 16px 0; align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 12px 17px; }
+      .hero { padding: 55px 0; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .art { min-height: 290px; }
+      .cards, .steps { grid-template-columns: 1fr; }
+      .team-list { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="logo">Barnacare</div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#services">Our Focus</a>
+    <nav class="container">
+      <a class="logo" href="#home">BARN<span>ACARE</span></a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#science">Our Approach</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Welcome to Barnacare</h1>
-      <p>
-        Discover our project, our vision, and the ideas
-        we are building together for a better future.
-      </p>
-      <a class="button" href="#about">Discover More</a>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Student-led biomedical innovation</span>
+          <h1>Inspired by the sea. <span>Designed for skin.</span></h1>
+          <p>
+            Exploring the potential of marine collagen through a dermal
+            microneedle patch concept designed for future wound-care research.
+          </p>
+          <a class="button" href="#about">Discover Barnacare</a>
+          <a class="button secondary" href="#science">Explore the concept</a>
+        </div>
+
+        <div class="art" role="img" aria-label="Illustration of a microneedle patch concept">
+          <div class="patch">
+            <div class="patch-inner">
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span><span class="needle"></span>
+              <span class="needle"></span>
+            </div>
+          </div>
+          <div class="art-label">Dermal Microneedle Patch · Concept</div>
+        </div>
+      </div>
     </section>
 
     <section id="about">
-      <h2>About Barnacare</h2>
-      <p>
-        Barnacare is a project built on care, creativity,
-        and the desire to make a positive difference.
-      </p>
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">About Barnacare</span>
+          <h2>Where biomaterials meet biomedical research</h2>
+          <p>
+            A student-led project exploring a new concept at the intersection
+            of skin care, biomaterials, and future wound-care technologies.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <h3>Our project</h3>
+            <p>
+              Barnacare is developing a concept for a dermal microneedle patch
+              loaded with marine collagen. The idea brings together a
+              microneedle-based delivery approach and a biomaterial of interest
+              in skin and tissue research.
+            </p>
+            <p>
+              The project is being developed by students from the Faculty of
+              Health Sciences at Borg El Arab Technological University.
+              It reflects our interest in practical, research-informed
+              biomedical innovation.
+            </p>
+          </div>
+
+          <div class="note">
+            <strong>Our vision</strong>
+            <p>
+              To explore innovative biomaterial-based approaches that may
+              contribute to future skin repair and wound-care research.
+            </p>
+            <br>
+            <strong>Our mission</strong>
+            <p>
+              To learn, investigate, and develop our concept through scientific
+              thinking, collaboration, and responsible research.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="services">
-      <h2>Our Focus</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Our Vision</h3>
-          <p>Working toward a meaningful and positive impact.</p>
+    <section id="science" style="background:#fbfefc">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Research & Innovation</span>
+          <h2>The ideas behind the patch</h2>
+          <p>
+            Three connected areas guide our concept and its future research.
+          </p>
         </div>
-        <div class="card">
-          <h3>Our Mission</h3>
-          <p>Turning ideas into useful and creative solutions.</p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">🌊</div>
+            <h3>Marine Collagen</h3>
+            <p>
+              Investigating marine-derived collagen as a biomaterial of
+              interest for skin-related and tissue-engineering research.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✳</div>
+            <h3>Microneedle Technology</h3>
+            <p>
+              Exploring a patch-based concept that uses tiny projections
+              designed to interact with the outer layers of the skin.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🔬</div>
+            <h3>Future Wound-Care Research</h3>
+            <p>
+              Studying the concept's potential relevance to wound healing
+              and skin regeneration through appropriate future evaluation.
+            </p>
+          </article>
         </div>
-        <div class="card">
-          <h3>Our Team</h3>
-          <p>Building something better through collaboration.</p>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Our Approach</span>
+          <h2>From concept to investigation</h2>
+          <p>
+            A simple overview of the ideas we are exploring as a student team.
+          </p>
         </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">01</div>
+            <h3>Explore the Biomaterial</h3>
+            <p>
+              Review scientific literature about marine collagen and its
+              possible applications in biomaterials research.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">02</div>
+            <h3>Develop the Patch Concept</h3>
+            <p>
+              Explore how a dermal microneedle patch might be designed and
+              what material and design questions need investigation.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">03</div>
+            <h3>Evaluate Responsibly</h3>
+            <p>
+              Identify the testing, safety assessment, and evidence needed
+              before any therapeutic claims or clinical use could be considered.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Our Team</span>
+          <h2>Students behind the idea</h2>
+        </div>
+        <p class="team-intro">
+          A collaborative student team from the Faculty of Health Sciences,
+          Borg El Arab Technological University.
+        </p>
+
+        <div class="team-list">
+          <div class="member"><span class="avatar">A</span><strong>Ahmed Karam</strong></div>
+          <div class="member"><span class="avatar">M</span><strong>Mohamed Shaaban Rabie</strong></div>
+          <div class="member"><span class="avatar">H</span><strong>Hassan El-Sayed Abdelbaqi</strong></div>
+          <div class="member"><span class="avatar">M</span><strong>Mai Mostafa Mahmoud</strong></div>
+          <div class="member"><span class="avatar">R</span><strong>Rawaa Alaa Abdelrahman</strong></div>
+          <div class="member"><span class="avatar">S</span><strong>Sara Mahmoud Abdullah</strong></div>
+          <div class="member"><span class="avatar">S</span><strong>Sara Sherif Mohamed</strong></div>
+          <div class="member"><span class="avatar">S</span><strong>Sohaila Abdelrady Salah</strong></div>
+          <div class="member"><span class="avatar">M</span><strong>Menna Allah Ahmed Ibrahim</strong></div>
+          <div class="member"><span class="avatar">H</span><strong>Heba Atef Mansour</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2>Curious about Barnacare?</h2>
+        <p>
+          We are exploring a biomedical concept with a focus on learning,
+          research, and responsible innovation. Follow our journey as the
+          project develops.
+        </p>
+        <a class="button" href="#home">Back to top ↑</a>
+        <p class="disclaimer">
+          Barnacare is a student-led project concept under development.
+          The patch has not been presented here as an approved or clinically
+          validated treatment. Safety and effectiveness require appropriate
+          scientific evaluation.
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 Barnacare. All rights reserved.</p>
+    <div class="container">
+      © 2026 Barnacare · Student Biomedical Project · Borg El Arab Technological University
+    </div>
   </footer>
 </body>
 </html>
