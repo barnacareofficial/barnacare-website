@@ -1,2 +1,1 @@
-# barnacare-website
-Official Barnacare project website
+Barnacare is an innovative student-led biomedical project developing a Dermal Microneedle Patch loaded with marine collagen. The concept aims to explore a minimally invasive approach to delivering active ingredients to the skin to support wound healing and skin regeneration. Developed by students from the Faculty of Health Sciences at Borg El Arab Technological University, the project combines biomedical innovation, biomaterials research, and patient-centered design to explore future possibilities in wound and burn care.
