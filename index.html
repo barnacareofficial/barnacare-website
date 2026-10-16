@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barnacare | Welcome</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #20352d;
+      background: #f5faf6;
+    }
+
+    header {
+      padding: 22px 8%;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #247451;
+    }
+
+    nav a {
+      margin-left: 18px;
+      color: #20352d;
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px;
+      background: #e3f3e8;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 56px);
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 550px;
+      margin: 0 auto 28px;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #247451;
+      color: white;
+      padding: 14px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 48px 8%;
+      text-align: center;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 25px;
+      max-width: 300px;
+      flex: 1 1 220px;
+      box-shadow: 0 4px 18px #183c2510;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #203d30;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Barnacare</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Our Focus</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Welcome to Barnacare</h1>
+      <p>
+        Discover our project, our vision, and the ideas
+        we are building together for a better future.
+      </p>
+      <a class="button" href="#about">Discover More</a>
+    </section>
+
+    <section id="about">
+      <h2>About Barnacare</h2>
+      <p>
+        Barnacare is a project built on care, creativity,
+        and the desire to make a positive difference.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2>Our Focus</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Our Vision</h3>
+          <p>Working toward a meaningful and positive impact.</p>
+        </div>
+        <div class="card">
+          <h3>Our Mission</h3>
+          <p>Turning ideas into useful and creative solutions.</p>
+        </div>
+        <div class="card">
+          <h3>Our Team</h3>
+          <p>Building something better through collaboration.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Barnacare. All rights reserved.</p>
+  </footer>
+</body>
+</html>
